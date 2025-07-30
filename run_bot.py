@@ -170,7 +170,7 @@ def main():
     )
     parser.add_argument(
         "--mode", "-m",
-        choices=["trade", "report", "list", "sample"],
+        choices=["trade", "report", "list", "sample", "gui", "quantum-gui"],
         default="trade",
         help="Operation mode (default: trade)"
     )
@@ -224,6 +224,26 @@ def main():
     
     if args.mode == "report":
         run_performance_report(args.config)
+        return
+    
+    if args.mode == "gui":
+        # Launch standard GUI
+        try:
+            from gui_trading_bot import TradingBotGUI
+            gui = TradingBotGUI()
+            gui.root.mainloop()
+        except ImportError:
+            print("GUI module not available. Install required GUI dependencies.")
+        return
+    
+    if args.mode == "quantum-gui":
+        # Launch quantum-themed GUI
+        try:
+            from quantum_trading_gui import QuantumTradingGUI
+            gui = QuantumTradingGUI()
+            gui.run()
+        except ImportError:
+            print("Quantum GUI module not available. Install required GUI dependencies.")
         return
     
     # Validate configuration

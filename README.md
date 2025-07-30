@@ -68,9 +68,39 @@ pip install TA-Lib
 ## 🖥️ GUI Usage
 
 ### 🚀 Quick Start with GUI
+
+**Standard GUI (Traditional Interface):**
 ```bash
 python gui_trading_bot.py
+# or
+python run_bot.py --mode gui
 ```
+
+**🌌 Quantum GUI (Cyberpunk/Futuristic Interface):**
+```bash
+python launch_quantum_gui.py
+# or
+python run_bot.py --mode quantum-gui
+```
+
+### 🌟 Quantum Trading Matrix Interface
+
+Experience trading like never before with our cutting-edge **Quantum Trading Matrix** - a cyberpunk-inspired interface that transforms your trading experience:
+
+#### 🎮 Quantum Features
+- **🔮 Quantum Processing Matrix**: Real-time animated qubit grid showing trading states
+- **🧠 Neural Pattern Recognition**: Advanced pattern visualization with geometric indicators  
+- **📊 Predictive Analytics Engine**: Bullish/bearish sentiment analysis with confidence metrics
+- **💫 Quantum Data Stream**: Live trading data with color-coded neural network messages
+- **🎯 Floating Controls**: Intuitive bot control panel with quantum-themed buttons
+- **✨ Animated Background**: Rotating quantum dots and dynamic visual effects
+
+#### 🎨 Visual Design
+- **Dark Cyberpunk Theme**: Deep space backgrounds with neon highlights
+- **Neon Color Palette**: Cyan, magenta, purple, and green accent colors
+- **Futuristic Typography**: Orbitron and Courier New fonts for sci-fi aesthetics
+- **Real-time Animations**: Constantly changing quantum grid and particle effects
+- **Status Indicators**: "QUANTUM STATE: SUPERPOS | REALITY: SIMULATED"
 
 ### 📱 Interface Overview
 
