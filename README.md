@@ -1,6 +1,6 @@
 # MetaTrader 5 Advanced Trading Bot
 
-A comprehensive Python-based MetaTrader 5 trading bot featuring multiple advanced strategies including KT+GMAC, Martingale, Snowball, HFT, Arbitrage, Neural Networks, and AI Model strategies.
+A comprehensive Python-based MetaTrader 5 trading bot featuring multiple advanced strategies with a modern GUI interface for easy strategy selection, configuration, and monitoring.
 
 ## 🚀 Features
 
@@ -13,13 +13,24 @@ A comprehensive Python-based MetaTrader 5 trading bot featuring multiple advance
 - **Neural Network**: Machine learning-based predictions using RandomForest
 - **AI Model**: Advanced ensemble methods with multiple technical indicators
 
+### GUI Features
+- **📊 Strategy Selection**: Easy checkboxes to enable/disable strategies
+- **⚙️ Configuration Panel**: Intuitive forms for all settings
+- **📈 Real-time Monitoring**: Live account info and position tracking
+- **📋 Performance Analytics**: Charts and metrics for each strategy
+- **🔧 System Tray Integration**: Minimize to tray with quick controls
+- **📝 Live Logging**: Real-time log viewer with filtering
+- **💾 Save/Load Configs**: Multiple configuration profiles
+
 ### Key Capabilities
 - ✅ **Multi-Strategy Execution**: Run multiple strategies simultaneously
 - ✅ **Risk Management**: Position sizing, stop losses, and drawdown protection
 - ✅ **Real-time Trading**: Live market data and order execution
+- ✅ **Modern GUI**: User-friendly interface with tabbed navigation
 - ✅ **Configuration**: JSON-based strategy and risk parameter settings
 - ✅ **Logging**: Comprehensive trade and error logging
 - ✅ **Backtesting Ready**: Modular design for easy backtesting integration
+- ✅ **System Tray**: Run in background with quick access controls
 
 ## 📋 Prerequisites
 
@@ -54,239 +65,316 @@ sudo make install
 pip install TA-Lib
 ```
 
+## 🖥️ GUI Usage
+
+### 🚀 Quick Start with GUI
+```bash
+python gui_trading_bot.py
+```
+
+### 📱 Interface Overview
+
+The GUI provides 6 main tabs:
+
+#### 1. **Control Tab** - Main Dashboard
+- Start/Stop bot controls
+- Connection status indicator
+- Quick performance statistics
+- MT5 connection testing
+
+#### 2. **Strategies Tab** - Strategy Selection & Configuration
+- **Enable/Disable**: Simple checkboxes for each strategy
+- **Weight Settings**: Adjust allocation for each strategy
+- **Parameter Tuning**: Strategy-specific settings
+- **Performance Indicators**: Real-time strategy performance
+
+#### 3. **Configuration Tab** - Account & Risk Settings
+- **MT5 Account**: Account number, password, server
+- **Trading Symbols**: Select currency pairs to trade
+- **Risk Management**: Position sizing, drawdown limits
+- **Load/Save**: Configuration file management
+
+#### 4. **Monitoring Tab** - Real-time Data
+- **Account Information**: Balance, equity, margin
+- **Active Positions**: Live position tracking with P&L
+- **Market Information**: Spread monitoring
+- **Auto-refresh**: Updates every 5 seconds
+
+#### 5. **Performance Tab** - Analytics & Charts
+- **Performance Metrics**: Win rate, profit factor, Sharpe ratio
+- **Interactive Charts**: Cumulative P&L and strategy comparison
+- **Export Reports**: Generate detailed performance reports
+
+#### 6. **Logs Tab** - System Messages
+- **Real-time Logging**: All bot activities and errors
+- **Log Filtering**: Filter by log level (DEBUG, INFO, WARNING, ERROR)
+- **Save Logs**: Export logs to file
+
+### 🎯 Strategy Selection Made Easy
+
+**Enable Strategies:**
+1. Go to **Strategies** tab
+2. Check the boxes for desired strategies:
+   - ☑️ **KT + GMAC Strategy** - Technical analysis powerhouse
+   - ☑️ **Martingale Strategy** - Progressive recovery system
+   - ☑️ **Snowball Strategy** - Compound your wins
+   - ☑️ **High Frequency Trading** - Scalping opportunities
+   - ☑️ **Arbitrage Strategy** - Market inefficiency exploitation
+   - ☑️ **Neural Network Strategy** - AI-powered predictions
+   - ☑️ **AI Model Strategy** - Advanced machine learning
+
+**Configure Parameters:**
+- Adjust **Weight** for capital allocation
+- Fine-tune strategy-specific parameters
+- Set risk levels and thresholds
+- Save configuration for later use
+
+### 🔧 System Tray Features
+
+When minimized, the bot runs in your system tray with:
+- **Quick Status**: Green (running) / Red (stopped) icon
+- **Right-click Menu**:
+  - Show/Hide main window
+  - Start/Stop bot
+  - View quick statistics
+  - Access logs and settings
+  - Exit application
+- **Notifications**: Bot status changes and important events
+
 ## ⚙️ Configuration
 
-### 1. MT5 Account Setup
-Edit `config.json` with your MT5 credentials:
+### 1. MT5 Account Setup (GUI)
+1. Go to **Configuration** tab
+2. Enter your MT5 credentials:
+   - Account Number
+   - Password
+   - Server
+3. Click **Test MT5 Connection** to verify
+4. **Save Configuration**
 
-```json
-{
-    "account": YOUR_ACCOUNT_NUMBER,
-    "password": "YOUR_PASSWORD",
-    "server": "YOUR_BROKER_SERVER"
-}
-```
+### 2. Strategy Selection (GUI)
+1. Go to **Strategies** tab
+2. Use checkboxes to enable desired strategies
+3. Adjust weights and parameters as needed
+4. Use **Enable All** / **Disable All** for quick setup
 
-### 2. Strategy Configuration
-Each strategy can be individually enabled/disabled and configured:
-
-```json
-"strategies": {
-    "kt_gmac": {
-        "enabled": true,
-        "weight": 1.0,
-        "timeframe": "M5"
-    },
-    "martingale": {
-        "enabled": true,
-        "max_levels": 5,
-        "multiplier": 2
-    }
-}
-```
-
-### 3. Risk Management
-Configure position sizing and risk limits:
-
-```json
-"risk_management": {
-    "max_daily_loss": 0.05,
-    "max_drawdown": 0.15,
-    "position_sizing_method": "fixed_fractional"
-}
-```
+### 3. Risk Management (GUI)
+Configure in **Configuration** tab:
+- **Risk per Trade**: Percentage of capital per trade
+- **Max Positions**: Maximum concurrent trades
+- **Daily Loss Limit**: Stop trading after daily loss
+- **Drawdown Protection**: Maximum account drawdown
 
 ## 🏃‍♂️ Running the Bot
 
-### Basic Usage
+### 🖥️ With GUI (Recommended)
 ```bash
-python mt5_trading_bot.py
+python gui_trading_bot.py
 ```
 
-### Using Custom Config
+### 💻 Command Line (Advanced)
 ```bash
-python mt5_trading_bot.py --config custom_config.json
+# Basic usage
+python run_bot.py
+
+# With custom config
+python run_bot.py --config my_config.json
+
+# Generate sample config
+python run_bot.py --mode sample
+
+# View performance report
+python run_bot.py --mode report
 ```
 
-### Running Specific Strategies
-Modify the `config.json` to enable only desired strategies:
+### 🔧 Advanced CLI Options
+```bash
+# List strategies
+python run_bot.py --mode list
 
-```json
-"strategies": {
-    "kt_gmac": {"enabled": true},
-    "martingale": {"enabled": false},
-    "hft": {"enabled": true}
-}
+# Enable specific strategy
+python run_bot.py --enable kt_gmac
+
+# Disable strategy
+python run_bot.py --disable martingale
+
+# Dry run mode
+python run_bot.py --dry-run
+
+# Debug logging
+python run_bot.py --log-level DEBUG
 ```
 
 ## 📊 Strategy Details
 
 ### 1. KT + GMAC Strategy
-**Concept**: Combines Klinger Oscillator momentum with Guppy Multiple Averaging Crossover
-- **Timeframe**: M5 (5-minute)
-- **Signals**: Generated on EMA ribbon crossovers
-- **Risk**: 1% stop loss, 2% take profit
+**GUI Settings**: Enable in Strategies tab
+- **Timeframe**: 5-minute charts
+- **Signals**: EMA ribbon crossovers with Klinger confirmation
+- **Risk**: Configurable stop loss and take profit
 
 ### 2. Martingale Strategy
-**Concept**: Progressive position sizing to recover from losses
-- **Timeframe**: M1 (1-minute)
-- **Maximum Levels**: 5 (configurable)
-- **Risk Control**: Maximum exposure limits
+**GUI Settings**: Configure max levels and multiplier
+- **Concept**: Double down on losses with safety limits
+- **Risk Control**: Maximum 5 levels (configurable)
+- **Recovery**: Designed for high win rate strategies
 
 ### 3. Snowball Strategy
-**Concept**: Compound profitable positions using momentum
-- **Trigger**: $50+ profit threshold
-- **Multiplier**: 1.5x position sizing
-- **Indicator**: 10-period momentum
+**GUI Settings**: Set profit threshold and compound factor
+- **Trigger**: Build on winning positions
+- **Growth**: Exponential profit compounding
+- **Safety**: Momentum-based entry confirmation
 
 ### 4. High Frequency Trading (HFT)
-**Concept**: Rapid micro-trend following with tight spreads
-- **Timeframe**: M1 (1-minute)
-- **Entry**: 1+ pip movements
-- **Position Size**: 50% of normal size
+**GUI Settings**: Configure spread and movement thresholds
+- **Speed**: 1-minute timeframe execution
+- **Opportunity**: Micro-price movements
+- **Volume**: Smaller position sizes, higher frequency
 
 ### 5. Arbitrage Strategy
-**Concept**: Exploit price differences between correlated pairs
-- **Method**: Statistical arbitrage using Z-scores
-- **Threshold**: 2.0 standard deviations
-- **Correlation**: 0.8+ required
+**GUI Settings**: Set correlation and Z-score thresholds
+- **Method**: Statistical arbitrage between pairs
+- **Detection**: Price divergence identification
+- **Execution**: Simultaneous long/short positions
 
 ### 6. Neural Network Strategy
-**Concept**: Machine learning predictions using technical indicators
-- **Model**: RandomForest Classifier
+**GUI Settings**: Configure confidence threshold and training periods
+- **AI**: RandomForest machine learning
 - **Features**: 11 technical indicators
-- **Confidence**: 70%+ threshold required
+- **Adaptation**: Continuous model retraining
 
 ### 7. AI Model Strategy
-**Concept**: Advanced ensemble methods with multiple indicators
-- **Features**: 20+ technical indicators
-- **Timeframe**: M15 (15-minute)
-- **Logic**: Multi-factor decision making
+**GUI Settings**: Advanced parameter tuning available
+- **Intelligence**: Ensemble methods
+- **Indicators**: 20+ technical features
+- **Decision**: Multi-factor analysis
 
 ## 🛡️ Risk Management
 
-### Position Sizing
-```python
-# Fixed fractional method
-position_size = account_balance * risk_per_trade / stop_loss_distance
-```
+### GUI Risk Controls
+Easily configure in the **Configuration** tab:
 
-### Risk Controls
-- **Maximum Positions**: 10 concurrent trades
-- **Daily Loss Limit**: 5% of account
-- **Maximum Drawdown**: 15% stop trading
-- **Spread Limits**: Maximum 10 pips
+**Position Sizing**
+- Risk per trade: 1-10% of account
+- Maximum positions: 1-50 concurrent trades
+- Auto-calculation based on account balance
 
-### Stop Loss & Take Profit
-Each strategy implements appropriate SL/TP ratios:
-- **Conservative**: 1:2 risk/reward
-- **Aggressive**: 1:1.5 risk/reward
-- **HFT**: 1:1 with rapid execution
+**Protection Limits**
+- Daily loss limit: Stop trading after X% loss
+- Maximum drawdown: Emergency stop at X% drawdown
+- Spread limits: Skip trades with high spreads
+
+**Real-time Monitoring**
+- Live P&L tracking in **Monitoring** tab
+- Position table with current prices
+- Account balance and margin display
 
 ## 📈 Performance Monitoring
 
-### Logging
-- **Trade Logs**: All orders with strategy attribution
-- **Error Logs**: System and strategy errors
-- **Performance**: P&L tracking per strategy
+### GUI Analytics
+The **Performance** tab provides:
 
-### Metrics Tracked
-- Win rate per strategy
-- Average profit/loss
+**Key Metrics Display**
+- Total trades and win rate
+- Profit factor and Sharpe ratio
 - Maximum drawdown
-- Sharpe ratio
-- Total trades executed
+- Total P&L by strategy
 
-## 🔧 Customization
+**Interactive Charts**
+- Cumulative profit/loss over time
+- Strategy performance comparison
+- Export charts as images
 
-### Adding New Strategies
-1. Create a new class inheriting from `BaseStrategy`
-2. Implement the `generate_signals()` method
-3. Add to the strategy registry in `init_strategies()`
-4. Configure in `config.json`
-
-Example:
-```python
-class MyCustomStrategy(BaseStrategy):
-    def generate_signals(self) -> List[TradeSignal]:
-        signals = []
-        # Your strategy logic here
-        return signals
-```
-
-### Modifying Existing Strategies
-Each strategy is modular and can be modified independently:
-- Change timeframes
-- Adjust risk parameters
-- Modify technical indicators
-- Update entry/exit conditions
-
-## ⚠️ Important Warnings
-
-### Financial Risk
-- **Demo First**: Always test on demo accounts
-- **Risk Capital**: Only trade with money you can afford to lose
-- **Market Risk**: All trading involves significant risk
-- **No Guarantees**: Past performance doesn't guarantee future results
-
-### Technical Risks
-- **Connection**: Ensure stable internet connection
-- **VPS Recommended**: For 24/7 trading
-- **Backup Power**: Uninterrupted power supply
-- **Monitor Positions**: Regular position monitoring required
-
-### Legal Considerations
-- Check local regulations for algorithmic trading
-- Ensure broker allows automated trading
-- Comply with tax obligations
-- Understand terms of service
+**Real-time Updates**
+- Live performance calculation
+- Strategy-by-strategy breakdown
+- Historical data visualization
 
 ## 🐛 Troubleshooting
+
+### GUI Issues
+
+**GUI Won't Start**
+```bash
+# Check dependencies
+pip install tkinter matplotlib pillow pystray
+
+# Try basic version
+python gui_trading_bot.py
+```
+
+**System Tray Not Working**
+```bash
+# Install tray dependencies
+pip install pystray Pillow
+
+# Or disable tray (edit config)
+```
+
+**Charts Not Displaying**
+```bash
+# Install chart dependencies
+pip install matplotlib seaborn plotly
+```
 
 ### Common Issues
 
 **MT5 Connection Failed**
-```
-Error: MT5 initialization failed
-Solution: Check MT5 is running and credentials are correct
-```
+1. Check MetaTrader 5 is running
+2. Verify credentials in **Configuration** tab
+3. Use **Test MT5 Connection** button
+4. Check server name format
 
-**Missing TA-Lib**
-```
-Error: No module named 'talib'
-Solution: Install TA-Lib properly (see installation section)
-```
+**Strategy Not Trading**
+1. Verify strategy is enabled in **Strategies** tab
+2. Check market hours
+3. Review risk limits in **Configuration**
+4. Monitor **Logs** tab for errors
 
-**Strategy Not Executing**
-```
-Issue: No trades being placed
-Check: 
-1. Strategy is enabled in config.json
-2. Market is open
-3. Sufficient account balance
-4. Risk limits not exceeded
-```
+**Performance Issues**
+1. Reduce number of active strategies
+2. Increase timeframes for less frequent trading
+3. Check system resources
+4. Monitor **Performance** tab
 
 ### Debug Mode
 Enable detailed logging:
-```json
-"logging": {
-    "level": "DEBUG"
-}
-```
+1. Go to **Logs** tab
+2. Set log level to **DEBUG**
+3. Monitor all bot activities
+4. Save logs for analysis
+
+## 🎮 Pro Tips
+
+### Strategy Selection
+- **Start Small**: Enable 2-3 strategies initially
+- **Test Period**: Run on demo account for 1-2 weeks
+- **Monitor Performance**: Use **Performance** tab regularly
+- **Adjust Weights**: Favor performing strategies
+
+### Risk Management
+- **Conservative Start**: Use 1-2% risk per trade
+- **Diversification**: Don't put all capital in one strategy
+- **Stop Losses**: Always use appropriate stop losses
+- **Review Daily**: Check performance in **Monitoring** tab
+
+### GUI Efficiency
+- **System Tray**: Minimize to tray for background operation
+- **Multiple Configs**: Save different setups for different markets
+- **Export Reports**: Regular performance analysis
+- **Hot Keys**: Learn keyboard shortcuts
 
 ## 📞 Support
 
-### Documentation
-- Strategy explanations in code comments
-- Configuration examples provided
-- Error handling with descriptive messages
+### GUI Help
+- **Built-in Help**: Tooltips and descriptions in GUI
+- **Configuration Examples**: Sample configs included
+- **Error Messages**: Detailed error reporting in **Logs** tab
 
-### Community
-- Review code for improvements
-- Submit issues for bugs
-- Contribute new strategies
-- Share configuration optimizations
+### Performance Optimization
+- **Strategy Weights**: Use **Performance** tab data
+- **Parameter Tuning**: Adjust based on results
+- **Resource Monitoring**: Check system resource usage
 
 ## 📜 License
 
@@ -304,4 +392,4 @@ This trading bot is provided as-is without any warranties. The authors are not r
 
 ---
 
-**Happy Trading! 🚀📈**
+**Happy Trading with the GUI! 🚀📈🖥️**

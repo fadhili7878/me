@@ -17,3 +17,12 @@ logging==0.4.9.6
 threading2==0.1.1
 dataclasses==0.6
 typing-extensions==4.8.0
+
+# GUI Dependencies
+tkinter
+Pillow==10.1.0
+pystray==0.19.5
+
+# Optional: For better charts and visualizations
+plotly==5.17.0
+dash==2.14.2
