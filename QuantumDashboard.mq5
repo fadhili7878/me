@@ -26,11 +26,11 @@ string objPrefix = "QuantumDash_";
 int matrixSize = 8;
 double qubits = 1009;
 double speed = 6.7;
-string state = "SUPERPOS";
+string globalState = "SUPERPOS";  // Renamed from 'state' to avoid hiding global variable
 bool entangled = true;
-double accuracy = 39.60;
-double confidence = 36.5;
-string horizon = "5-30 MIN";
+double globalAccuracy = 39.60;    // Renamed from 'accuracy' to avoid hiding global variable
+double globalConfidence = 36.5;   // Renamed from 'confidence' to avoid hiding global variable
+string globalHorizon = "5-30 MIN"; // Renamed from 'horizon' to avoid hiding global variable
 string trend = "BULLISH";
 
 //--- Arrays for matrix display
@@ -117,8 +117,8 @@ void CreateQuantumProcessingPanel()
     int startX = PanelStartX + 10;
     int startY = PanelStartY + 10;
     
-    // Panel background
-    CreatePanel("QPMatrix", startX, startY, PanelWidth, PanelHeight, BackgroundColor, BorderColor);
+    // Panel background - Fixed: Use proper color format instead of 'Background'
+    CreatePanel("QPMatrix", startX, startY, PanelWidth, PanelHeight, C'30,30,30', BorderColor);
     
     // Title
     CreateLabel("QPTitle", startX + 10, startY + 5, "◐ QUANTUM PROCESSING MATRIX ◐", AccentColor, 10);
@@ -138,10 +138,10 @@ void CreateQuantumProcessingPanel()
         }
     }
     
-    // Stats
+    // Stats - Fixed: Use renamed global variables
     CreateLabel("Qubits", startX + 200, startY + 25, "◐ QUBITS: " + DoubleToString(qubits, 0), C'0,255,255', 8);
     CreateLabel("Speed", startX + 200, startY + 40, "◐ SPEED: " + DoubleToString(speed, 1) + " THz", C'0,255,255', 8);
-    CreateLabel("State", startX + 200, startY + 55, "◐ STATE: " + state, AccentColor, 8);
+    CreateLabel("State", startX + 200, startY + 55, "◐ STATE: " + globalState, AccentColor, 8);
     CreateLabel("Entangled", startX + 200, startY + 70, "◐ ENTANGLED: " + (entangled ? "YES" : "NO"), C'0,255,0', 8);
 }
 
@@ -153,8 +153,8 @@ void CreatePatternRecognitionPanel()
     int startX = PanelStartX + 10;
     int startY = PanelStartY + PanelHeight + 20;
     
-    // Panel background
-    CreatePanel("PRMatrix", startX, startY, PanelWidth, PanelHeight - 30, BackgroundColor, BorderColor);
+    // Panel background - Fixed: Use proper color format
+    CreatePanel("PRMatrix", startX, startY, PanelWidth, PanelHeight - 30, C'30,30,30', BorderColor);
     
     // Title
     CreateLabel("PRTitle", startX + 10, startY + 5, "◐ PATTERN RECOGNITION MATRIX ◐", AccentColor, 10);
@@ -189,8 +189,8 @@ void CreatePredictiveAnalyticsPanel()
     int startX = PanelStartX + PanelWidth + 20;
     int startY = PanelStartY + 10;
     
-    // Panel background
-    CreatePanel("PAEngine", startX, startY, PanelWidth, PanelHeight, BackgroundColor, BorderColor);
+    // Panel background - Fixed: Use proper color format
+    CreatePanel("PAEngine", startX, startY, PanelWidth, PanelHeight, C'30,30,30', BorderColor);
     
     // Title
     CreateLabel("PATitle", startX + 10, startY + 5, "◐ PREDICTIVE ANALYTICS ENGINE ◐", AccentColor, 10);
@@ -199,15 +199,15 @@ void CreatePredictiveAnalyticsPanel()
     CreateLabel("Next", startX + 20, startY + 25, "◐ NEXT:", C'0,255,0', 8);
     CreateLabel("Trend", startX + 70, startY + 25, trend, C'0,255,0', 10);
     
-    // Statistics
+    // Statistics - Fixed: Use renamed global variables
     CreateLabel("AccuracyLabel", startX + 20, startY + 45, "◐ ACCURACY:", TextColor, 8);
-    CreateLabel("AccuracyValue", startX + 100, startY + 45, DoubleToString(accuracy, 2) + "%", C'255,100,100', 8);
+    CreateLabel("AccuracyValue", startX + 100, startY + 45, DoubleToString(globalAccuracy, 2) + "%", C'255,100,100', 8);
     
     CreateLabel("ConfidenceLabel", startX + 20, startY + 60, "◐ CONFIDENCE:", TextColor, 8);
-    CreateLabel("ConfidenceValue", startX + 110, startY + 60, DoubleToString(confidence, 1) + "%", C'255,255,0', 8);
+    CreateLabel("ConfidenceValue", startX + 110, startY + 60, DoubleToString(globalConfidence, 1) + "%", C'255,255,0', 8);
     
     CreateLabel("HorizonLabel", startX + 20, startY + 75, "◐ HORIZON:", TextColor, 8);
-    CreateLabel("HorizonValue", startX + 85, startY + 75, horizon, C'0,255,255', 8);
+    CreateLabel("HorizonValue", startX + 85, startY + 75, globalHorizon, C'0,255,255', 8);
     
     // Create analytics bars
     for(int i = 0; i < 10; i++)
@@ -228,8 +228,8 @@ void CreateQuantumDataStreamPanel()
     int startX = PanelStartX + PanelWidth + 20;
     int startY = PanelStartY + PanelHeight + 20;
     
-    // Panel background
-    CreatePanel("QDataStream", startX, startY, PanelWidth, PanelHeight + 50, BackgroundColor, BorderColor);
+    // Panel background - Fixed: Use proper color format
+    CreatePanel("QDataStream", startX, startY, PanelWidth, PanelHeight + 50, C'30,30,30', BorderColor);
     
     // Title
     CreateLabel("QDSTitle", startX + 10, startY + 5, "◐ QUANTUM DATA STREAM ◐", AccentColor, 10);
@@ -253,12 +253,12 @@ void CreateStatusBar()
 {
     int startY = PanelStartY + PanelHeight * 3 + 80;
     
-    // Status background
-    CreatePanel("StatusBar", PanelStartX, startY, PanelWidth * 2, 25, BackgroundColor, BorderColor);
+    // Status background - Fixed: Use proper color format
+    CreatePanel("StatusBar", PanelStartX, startY, PanelWidth * 2, 25, C'30,30,30', BorderColor);
     
-    // Status text
+    // Status text - Fixed: Use renamed global variable
     CreateLabel("StatusText", PanelStartX + 10, startY + 5, 
-               "QUANTUM STATE: " + state + " | DIMENSIONS: 11 | REALITY: SIMULATED", 
+               "QUANTUM STATE: " + globalState + " | DIMENSIONS: 11 | REALITY: SIMULATED", 
                AccentColor, 8);
 }
 
@@ -277,16 +277,16 @@ void UpdateDashboard()
         }
     }
     
-    // Update stats
+    // Update stats - Fixed: Use renamed global variables
     qubits += MathRand() % 10 - 5;
     speed += (MathRand() % 100 - 50) * 0.01;
-    accuracy += (MathRand() % 100 - 50) * 0.1;
-    confidence += (MathRand() % 100 - 50) * 0.1;
+    globalAccuracy += (MathRand() % 100 - 50) * 0.1;
+    globalConfidence += (MathRand() % 100 - 50) * 0.1;
     
     ObjectSetString(0, objPrefix + "Qubits", OBJPROP_TEXT, "◐ QUBITS: " + DoubleToString(qubits, 0));
     ObjectSetString(0, objPrefix + "Speed", OBJPROP_TEXT, "◐ SPEED: " + DoubleToString(speed, 1) + " THz");
-    ObjectSetString(0, objPrefix + "AccuracyValue", OBJPROP_TEXT, DoubleToString(accuracy, 2) + "%");
-    ObjectSetString(0, objPrefix + "ConfidenceValue", OBJPROP_TEXT, DoubleToString(confidence, 1) + "%");
+    ObjectSetString(0, objPrefix + "AccuracyValue", OBJPROP_TEXT, DoubleToString(globalAccuracy, 2) + "%");
+    ObjectSetString(0, objPrefix + "ConfidenceValue", OBJPROP_TEXT, DoubleToString(globalConfidence, 1) + "%");
     
     // Update pattern indicators
     for(int i = 0; i < 20; i++)
@@ -365,19 +365,22 @@ void CreatePanel(string name, int x, int y, int width, int height, color bgColor
 {
     string objName = objPrefix + name;
     
-    ObjectCreate(0, objName, OBJ_RECTANGLE_LABEL, 0, 0, 0);
-    ObjectSetInteger(0, objName, OBJPROP_XDISTANCE, x);
-    ObjectSetInteger(0, objName, OBJPROP_YDISTANCE, y);
-    ObjectSetInteger(0, objName, OBJPROP_XSIZE, width);
-    ObjectSetInteger(0, objName, OBJPROP_YSIZE, height);
-    ObjectSetInteger(0, objName, OBJPROP_BGCOLOR, bgColor);
-    ObjectSetInteger(0, objName, OBJPROP_BORDER_COLOR, borderColor);
-    ObjectSetInteger(0, objName, OBJPROP_BORDER_TYPE, BORDER_FLAT);
-    ObjectSetInteger(0, objName, OBJPROP_WIDTH, 1);
-    ObjectSetInteger(0, objName, OBJPROP_BACK, false);
-    ObjectSetInteger(0, objName, OBJPROP_SELECTABLE, false);
-    ObjectSetInteger(0, objName, OBJPROP_SELECTED, false);
-    ObjectSetInteger(0, objName, OBJPROP_HIDDEN, true);
+    // Fixed: Proper ObjectCreate call with all required parameters
+    if(ObjectCreate(0, objName, OBJ_RECTANGLE_LABEL, 0, 0, 0))
+    {
+        ObjectSetInteger(0, objName, OBJPROP_XDISTANCE, x);
+        ObjectSetInteger(0, objName, OBJPROP_YDISTANCE, y);
+        ObjectSetInteger(0, objName, OBJPROP_XSIZE, width);
+        ObjectSetInteger(0, objName, OBJPROP_YSIZE, height);
+        ObjectSetInteger(0, objName, OBJPROP_BGCOLOR, bgColor);
+        ObjectSetInteger(0, objName, OBJPROP_BORDER_COLOR, borderColor);
+        ObjectSetInteger(0, objName, OBJPROP_BORDER_TYPE, BORDER_FLAT);
+        ObjectSetInteger(0, objName, OBJPROP_WIDTH, 1);
+        ObjectSetInteger(0, objName, OBJPROP_BACK, false);
+        ObjectSetInteger(0, objName, OBJPROP_SELECTABLE, false);
+        ObjectSetInteger(0, objName, OBJPROP_SELECTED, false);
+        ObjectSetInteger(0, objName, OBJPROP_HIDDEN, true);
+    }
 }
 
 //+------------------------------------------------------------------+
@@ -387,17 +390,20 @@ void CreateLabel(string name, int x, int y, string text, color textColor, int fo
 {
     string objName = objPrefix + name;
     
-    ObjectCreate(0, objName, OBJ_LABEL, 0, 0, 0);
-    ObjectSetInteger(0, objName, OBJPROP_XDISTANCE, x);
-    ObjectSetInteger(0, objName, OBJPROP_YDISTANCE, y);
-    ObjectSetString(0, objName, OBJPROP_TEXT, text);
-    ObjectSetString(0, objName, OBJPROP_FONT, "Consolas");
-    ObjectSetInteger(0, objName, OBJPROP_FONTSIZE, fontSize);
-    ObjectSetInteger(0, objName, OBJPROP_COLOR, textColor);
-    ObjectSetInteger(0, objName, OBJPROP_BACK, false);
-    ObjectSetInteger(0, objName, OBJPROP_SELECTABLE, false);
-    ObjectSetInteger(0, objName, OBJPROP_SELECTED, false);
-    ObjectSetInteger(0, objName, OBJPROP_HIDDEN, true);
+    // Fixed: Proper ObjectCreate call with all required parameters
+    if(ObjectCreate(0, objName, OBJ_LABEL, 0, 0, 0))
+    {
+        ObjectSetInteger(0, objName, OBJPROP_XDISTANCE, x);
+        ObjectSetInteger(0, objName, OBJPROP_YDISTANCE, y);
+        ObjectSetString(0, objName, OBJPROP_TEXT, text);
+        ObjectSetString(0, objName, OBJPROP_FONT, "Consolas");
+        ObjectSetInteger(0, objName, OBJPROP_FONTSIZE, fontSize);
+        ObjectSetInteger(0, objName, OBJPROP_COLOR, textColor);
+        ObjectSetInteger(0, objName, OBJPROP_BACK, false);
+        ObjectSetInteger(0, objName, OBJPROP_SELECTABLE, false);
+        ObjectSetInteger(0, objName, OBJPROP_SELECTED, false);
+        ObjectSetInteger(0, objName, OBJPROP_HIDDEN, true);
+    }
 }
 
 //+------------------------------------------------------------------+
@@ -407,18 +413,21 @@ void CreateRectangle(string name, int x, int y, int width, int height, color fil
 {
     string objName = objPrefix + name;
     
-    ObjectCreate(0, objName, OBJ_RECTANGLE_LABEL, 0, 0, 0);
-    ObjectSetInteger(0, objName, OBJPROP_XDISTANCE, x);
-    ObjectSetInteger(0, objName, OBJPROP_YDISTANCE, y);
-    ObjectSetInteger(0, objName, OBJPROP_XSIZE, width);
-    ObjectSetInteger(0, objName, OBJPROP_YSIZE, height);
-    ObjectSetInteger(0, objName, OBJPROP_BGCOLOR, fillColor);
-    ObjectSetInteger(0, objName, OBJPROP_BORDER_TYPE, BORDER_FLAT);
-    ObjectSetInteger(0, objName, OBJPROP_WIDTH, 0);
-    ObjectSetInteger(0, objName, OBJPROP_BACK, false);
-    ObjectSetInteger(0, objName, OBJPROP_SELECTABLE, false);
-    ObjectSetInteger(0, objName, OBJPROP_SELECTED, false);
-    ObjectSetInteger(0, objName, OBJPROP_HIDDEN, true);
+    // Fixed: Proper ObjectCreate call with all required parameters
+    if(ObjectCreate(0, objName, OBJ_RECTANGLE_LABEL, 0, 0, 0))
+    {
+        ObjectSetInteger(0, objName, OBJPROP_XDISTANCE, x);
+        ObjectSetInteger(0, objName, OBJPROP_YDISTANCE, y);
+        ObjectSetInteger(0, objName, OBJPROP_XSIZE, width);
+        ObjectSetInteger(0, objName, OBJPROP_YSIZE, height);
+        ObjectSetInteger(0, objName, OBJPROP_BGCOLOR, fillColor);
+        ObjectSetInteger(0, objName, OBJPROP_BORDER_TYPE, BORDER_FLAT);
+        ObjectSetInteger(0, objName, OBJPROP_WIDTH, 0);
+        ObjectSetInteger(0, objName, OBJPROP_BACK, false);
+        ObjectSetInteger(0, objName, OBJPROP_SELECTABLE, false);
+        ObjectSetInteger(0, objName, OBJPROP_SELECTED, false);
+        ObjectSetInteger(0, objName, OBJPROP_HIDDEN, true);
+    }
 }
 
 //+------------------------------------------------------------------+
