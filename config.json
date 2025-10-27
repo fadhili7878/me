@@ -1,0 +1,101 @@
+{
+    "account": 123456,
+    "password": "your_mt5_password",
+    "server": "your_broker_server",
+    "symbols": [
+        "EURUSD",
+        "GBPUSD", 
+        "USDJPY",
+        "USDCHF",
+        "AUDUSD",
+        "USDCAD",
+        "NZDUSD",
+        "EURGBP"
+    ],
+    "risk_per_trade": 0.02,
+    "max_positions": 10,
+    "strategies": {
+        "kt_gmac": {
+            "enabled": true,
+            "weight": 1.0,
+            "timeframe": "M5",
+            "klinger_periods": [13, 34],
+            "gmac_short_periods": [3, 5, 8, 10, 12, 15],
+            "gmac_long_periods": [30, 35, 40, 45, 50, 60]
+        },
+        "martingale": {
+            "enabled": true,
+            "weight": 1.0,
+            "max_levels": 5,
+            "multiplier": 2,
+            "base_lot_size": 0.01,
+            "profit_target": 0.01
+        },
+        "snowball": {
+            "enabled": true,
+            "weight": 1.0,
+            "compound_factor": 1.5,
+            "profit_threshold": 50,
+            "momentum_period": 10
+        },
+        "hft": {
+            "enabled": true,
+            "weight": 1.0,
+            "min_spread": 1,
+            "max_spread": 5,
+            "timeframe": "M1",
+            "min_movement_pips": 1,
+            "position_size_factor": 0.5
+        },
+        "arbitrage": {
+            "enabled": true,
+            "weight": 1.0,
+            "correlation_threshold": 0.8,
+            "z_score_entry": 2.0,
+            "z_score_exit": 0.5,
+            "lookback_period": 50
+        },
+        "neural": {
+            "enabled": true,
+            "weight": 1.0,
+            "confidence_threshold": 0.7,
+            "training_period": 1000,
+            "retrain_interval": 24,
+            "features": [
+                "sma_20", "ema_12", "rsi", "macd", "macd_signal",
+                "bb_upper", "bb_middle", "bb_lower", "price_change",
+                "volatility", "volume_sma"
+            ]
+        },
+        "ai_model": {
+            "enabled": true,
+            "weight": 1.0,
+            "timeframe": "M15",
+            "lookback_period": 500,
+            "trend_threshold": 0.001,
+            "volatility_quantile": 0.8,
+            "rsi_overbought": 70,
+            "rsi_oversold": 30
+        }
+    },
+    "risk_management": {
+        "max_daily_loss": 0.05,
+        "max_drawdown": 0.15,
+        "position_sizing_method": "fixed_fractional",
+        "correlation_limit": 0.7,
+        "max_spread": 10
+    },
+    "trading_hours": {
+        "enabled": true,
+        "start_hour": 0,
+        "end_hour": 24,
+        "exclude_weekends": true,
+        "exclude_news_times": true
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "trading_bot.log",
+        "max_file_size": "10MB",
+        "backup_count": 5
+    }
+}
